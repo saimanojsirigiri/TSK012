@@ -1,0 +1,54 @@
+GET http://localhost:3031
+
+###
+GET http://localhost:3031/api/fetchAllQuestions
+
+###
+GET http://localhost:3031/api/fetchByTopic/Role
+
+###
+GET http://localhost:3031/api/randomQuestion
+
+###
+POST http://localhost:3031/api/postData
+Content-Type: application/json
+
+{
+    "que": "What is the company name?",
+    "opt": ["Nvidia", "Qualcomm","Intel","AMD"],
+    "ans": "Intel",
+    "topic": "Check"
+}
+
+###
+POST http://localhost:3031/api/postData
+Content-Type: application/json
+
+[
+    {
+        "que": "What is your role?",
+        "opt": ["Developer", "Tester","HR","Admin"],
+        "ans": "Developer",
+        "topic": "Role",
+        "isAnswered": "true"
+    },
+    {
+        "que": "What is your role?",
+        "opt": ["DB Admin", ".NET Developer","PHP Developer","Front End Developer"],
+        "ans": ".NET Developer",
+        "topic": "Role"
+    },
+    {
+        "que": "What is the company name?",
+        "opt": ["Accenture", "Dell","HP","Microsoft"],
+        "ans": "HP",
+        "topic": "Check",
+        "isAnswered": "true"
+    },
+    {
+        "que": "What is the company name?",
+        "opt": ["Wipro", "TCS","CapGemini","TechMahindra"],
+        "ans": "HP",
+        "topic": "Check"
+    }
+]
