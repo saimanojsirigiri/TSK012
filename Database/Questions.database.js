@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const bcrypt = require("bcrypt");
-const { log } = require("console");
 
 const questions = new schema({
   que: {
