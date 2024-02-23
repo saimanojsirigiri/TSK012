@@ -19,7 +19,7 @@ app.use(
 const PORT = process.env.PORT || 3031;
 
 app.get("/", async(req, res, next) => {
-    res.send("Hi");
+    res.send("Hello");
 });
 
 app.use("/api", route);
