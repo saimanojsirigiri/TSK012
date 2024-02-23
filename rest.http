@@ -1,0 +1,41 @@
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/api/fetchAllQuestions
+
+###
+GET http://localhost:3000/api/fetchByTopic/Role
+
+###
+GET http://localhost:3000/api/randomQuestion
+
+###
+POST http://localhost:3000/api/postData
+Content-Type: application/json
+
+{
+    "que": "What is the company name?",
+    "opt": ["Nvidia", "Qualcomm","Intel","AMD"],
+    "ans": "Intel",
+    "topic": "Check"
+}
+
+###
+POST http://localhost:3000/api/postData
+Content-Type: application/json
+
+[
+    {
+        "que": "What is your 2 role?",
+        "opt": ["Developer", "Tester","HR","Admin"],
+        "ans": "Developer",
+        "topic": "Role",
+        "isAnswered": "true"
+    },
+    {
+        "que": "What is your 3 role?",
+        "opt": ["DB Admin", ".NET Developer","PHP Developer","Front End Developer"],
+        "ans": ".NET Developer",
+        "topic": "Role"
+    }
+]
