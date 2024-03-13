@@ -10,16 +10,5 @@
       "src": "/(.*)",
       "dest": "app.js"
     }
-  ],
-  "headers": [
-    {
-      "source": "/api/randomQuestion",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    }
   ]
 }
