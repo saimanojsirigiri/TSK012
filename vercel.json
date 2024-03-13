@@ -1,10 +1,25 @@
 {
-    "builds": [{
-        "src": "/app.js",
-        "use": "@vercel/node"
-    }],
-    "routes": [{
-        "src": "/(.*)",
-        "dest": "app.js"
-    }]
+  "builds": [
+    {
+      "src": "/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/randomQuestion",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "http://127.0.0.1:5500"
+        }
+      ]
+    }
+  ]
 }
