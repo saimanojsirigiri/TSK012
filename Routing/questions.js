@@ -60,7 +60,7 @@ route.post("/postData", async (req, res, next) => {
   try {
     const savedQuestions = await Promise.all(
       arrayData.map(async (questionData) => {
-        const { que, opt, ans, topic, isAnswered } = questionData;
+        const { que, opt, ans, topic, isAnswered, timeLimit } = questionData;
         const hashedAns = await bcrypt.hash(ans, 10);
 
         const newQuestion = new ques({
@@ -69,6 +69,7 @@ route.post("/postData", async (req, res, next) => {
           ans: hashedAns,
           topic,
           isAnswered,
+          timeLimit,
         });
         return newQuestion.save();
       })

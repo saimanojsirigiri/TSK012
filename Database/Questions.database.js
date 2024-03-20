@@ -21,6 +21,9 @@ const questions = new schema({
     type: Boolean,
     default: false,
   },
+  timeLimit: {
+    type: String,
+  },
 });
 
 const Ques = mongoose.model("ques", questions);
