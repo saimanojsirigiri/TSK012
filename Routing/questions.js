@@ -28,31 +28,27 @@ route.get("/fetchByTopic/:Topic", async(req, res, next) => {
 route.get("/randomQuestion", async(req, res, next) => {
     try {
         const unAnsweredQuestions = await ques.find({ isAnswered: false });
-        if (unAnsweredQuestions.length === 0) {
-            res.status(404).json({ error: "No unanswered questions found" });
+        if (unAnsweredQuestions.length !== 0) {
+            const randomIndex = Math.floor(
+                Math.random() * unAnsweredQuestions.length
+            );
+
+            const randomQuestion = unAnsweredQuestions[randomIndex];
+
+            console.log("Random ID is: " + randomQuestion);
+
+            ques
+                .findByIdAndUpdate({ _id: randomQuestion._id }, {
+                    $set: {
+                        isAnswered: true,
+                    },
+                })
+                .then((data) => res.json(data))
+                .catch((err) => res.status(500).json({ message: err.message }));
+            // res.json({ randomQuestion });
+        } else {
+            res.json({ message: "No unanswered questions found" });
         }
-
-        const randomIndex = Math.floor(Math.random() * unAnsweredQuestions.length);
-
-        const randomQuestion = unAnsweredQuestions[randomIndex];
-
-        console.log("Random ID is: " + randomQuestion);
-
-        ques
-            .findByIdAndUpdate({ _id: randomQuestion._id }, {
-                $set: {
-                    isAnswered: true,
-                },
-            })
-            .then((data) => {
-                if (data) {
-                    res.json(data);
-                } else {
-                    res.json({ message: "No random question" });
-                }
-            })
-            .catch((err) => res.status(500).json({ message: err.message }));
-        // res.json({ randomQuestion });
     } catch (err) {
         next(err);
     }
